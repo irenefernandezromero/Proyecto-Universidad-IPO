@@ -1,0 +1,292 @@
+/**********************************************************************/
+
+
+/*  PROYECTO RESERVAS             */
+/*  EQUIPO   ITALIA               */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-fondo: hsl(0, 5%, 95%);
+    --color-primario: #112031;
+    --color-primario-claro: hsl(0, 0%, 50%);
+    --color-primario-muy-claro: hsl(0, 0%, 80%);
+    --color-sobre-primario: hsl(2, 100%, 100%);
+    --color-secundario: #D4ECDD;
+    --color-sobre-secundario: hsl(2, 0%, 0%);
+    --fuente-primaria: Arial, Helvetica, sans-serif;
+    --fuente-secuendaria: serif;
+    --color-pantalla: hsl(0, 100%, 100%);
+    --color-sombra-pantalla: rgba(255, 255, 255, 0.868);
+    --color-asiento-libre: rgb(45, 155, 67);
+    --color-asiento-libre-encima: rgb(192, 221, 198);
+    --color-asiento-ocupado: hsl(0, 73%, 72%);
+    --color-asiento-seleccionado: hsl(205, 82%, 62%);
+    --dimension-asiento: 1.7em;
+    --degradado-bandera: linear-gradient(90deg, green 0%, white 50%, red 100%);
+
+    --fuente-cabecera: Verdana;
+    --fuente-titulo-pelicula: Tahoma;
+    --fuente-descripcion: Courier;
+    --fuente-leyenda: Georgia;
+    --fuente-botones: Tahoma;
+}
+
+
+/**********************************************************************/
+
+body {
+    height: 100vh;
+    min-width: 710px; /*Ponemos un tamaño mínimo de anchura puesto que a partir de los 710px se desconfiguran algunos grid*/
+    background-color: var(--color-fondo);
+    /*Hemos puesto el cuerpo como un grid, con vistas a que pudiese albergar varios paneles de forma bidimensional en los que en cada
+    panel apareciesen las reservas para diferentes películas*/
+    display: grid;
+    place-items: center;
+}
+
+
+/**********************************************************************/
+
+.panel {
+    background-color: var(--color-secundario);
+    height: auto;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;  /*Ponemos un gap de 15px para que haya 15px de distancia entre los elementos de la columna*/
+
+}
+
+
+/**********************************************************************/
+
+.titulo {
+    width: 80%;
+    padding: 5px;
+    margin-top: 1em;
+    background-image: var(--degradado-bandera);
+    color: var(--color-primario);
+    text-transform: uppercase;
+    text-align: center;
+    /* font-size: 1.2rem; */
+    border-radius: 7px;
+    font-family: var(--fuente-cabecera);
+}
+
+
+/**********************************************************************/
+
+
+/*Ponemos el cartel de tipo flex puesto que toda la información queremos que vaya en modo columna*/
+.cartel {
+    width: 60%;
+    background-color: var(--color-primario-claro);
+    color: var(--color-sobre-primario);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 7px;
+    grid-gap: 5px;
+    grid-template-areas:
+    "area1 area1"
+    "area2 area2"
+    "area3 area4"
+    "area5 area6"
+    "area7 area7";
+}
+
+
+
+.cartel__pelicula {
+    font-family: var(--fuente-titulo-pelicula);
+    font-size: large; /*Ponemos el titulo más grande*/
+    grid-area: area1;
+    text-align: center;
+}
+
+.cartel__director {
+    font-family: var(--fuente-titulo-descripcion);
+    grid-area: area2;
+    text-align: center;
+}
+
+.cartel__cine {
+    font-family: var(--fuente-titulo-descripcion);
+    grid-area: area3;
+    text-align: center;
+}
+
+.cartel__sala {
+    font-family: var(--fuente-titulo-descripcion);
+    grid-area: area4;
+    text-align: center;
+}
+
+.cartel__fecha {
+    font-family: var(--fuente-titulo-descripcion);
+    grid-area: area5;
+    text-align: center;
+}
+
+.cartel__hora {
+    font-family: var(--fuente-titulo-descripcion);
+    grid-area: area6;
+    text-align: center;
+}
+
+.cartel__precio {
+    font-family: var(--fuente-titulo-descripcion);
+    grid-area: area7;
+    text-align: center;
+}
+
+.cartel__precio-cantidad {
+    font-family: var(--fuente-titulo-descripcion);
+} 
+
+/**********************************************************************/
+
+.leyendas {
+    width: 40%;
+    background-color: var(--color-primario);
+    color: var(--color-sobre-primario);
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /*Ponemos que salgan los 3 asientos en la misma fila de la columna y que el tamaño de todos ellos sea el mismo*/
+    border-radius: 7px;
+    padding: 5px;
+    font: 0.85rem var(--fuente-primaria);
+}
+
+.leyendas__item {
+    display: grid;
+    place-content: center;
+    place-items: center;
+}
+.leyendas__item {
+    display: grid;
+    justify-items: center;
+}
+
+
+.leyendas__leyenda {
+    color: var(--color-sobre-primario);
+    font-family: var(--fuente-titulo-descripcion);
+
+} 
+
+
+/**********************************************************************/
+
+.sala {
+    width: 40%;
+    background-color: var(--color-primario);
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sala__pantalla {
+    background-color: var(--color-pantalla);
+    height: 90px;
+    width: auto;
+    /* border-radius: 3px; */
+    border: hsl(0, 5%, 95%);
+    /* display: inline-block; */
+    margin-top: 10%;
+    margin-left: 13%;
+    margin-right: 13%;
+    box-shadow: -4px 6px 5px 0px var(--color-pantalla), 3px 6px 5px 0px var(--color-pantalla), 0px 0px 5px 6px var(--color-pantalla);
+}
+
+.sala__aforo {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(5,auto);
+    gap: 10px;
+    justify-content: center;
+}
+
+
+/**********************************************************************/
+
+.reserva {
+    width: 40%;
+    background-color: var(--color-primario);
+    color: var(--color-sobre-primario);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 3px;
+    font: 0.85rem var(--fuente-primaria);
+}
+
+.reserva__dato-numerico {
+    background-color: var(--color-primario-claro);
+    color: var(--color-sobre-primario);
+    /* Anchura para admitir números de dos cifras */
+    display: inline-block;
+    width: 2.5em;
+    text-align: center;
+}
+
+
+/**********************************************************************/
+
+.controles {
+    background-color: var(--color-primario);
+    color: var(--color-sobre-primario);
+    border-radius: 7px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 3px;
+}
+
+.controles__boton {
+    padding: 5px 10px;
+    font-family: var(--fuente-titulo-botones);
+    
+}
+
+
+/**********************************************************************/
+
+.asiento {
+    width: var(--dimension-asiento);
+    height: var(--dimension-asiento);
+    background-color: var(--color-asiento-libre);
+    border: 2px solid black;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.asiento--ocupado {
+    background-color: var(--color-asiento-ocupado);
+}
+
+.asiento--seleccionado {
+    background-color: var(--color-asiento-seleccionado);
+}
+
+
+/* No es factible reservar un asiento ocupado. 
+   Para reforzar esta restricción se modifica 
+   el estilo al sobrevolar con el cursor sobre 
+   un asiento no ocupado (i.e. libre o selecciodo) 
+*/
+
+
+/*Hemos añadido tambien que cuando sobrevolemos un asiento libre, este se marque de un tono grisáceo, para indicar que lo podemos 
+seleccionar de una forma más clara aún*/
+.sala .asiento:hover:not(.asiento--ocupado) {
+    cursor: pointer;
+    background-color: var(--color-asiento-libre-encima);
+}

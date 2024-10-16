@@ -1,0 +1,189 @@
+/**********************************************************************/
+
+
+/*  PROYECTO TARJETAS              */
+
+
+/*  EQUIPO ITALIA                  */
+
+
+/**********************************************************************/
+
+:root {
+    --degradado-bandera: linear-gradient(90deg, green 0%, white 50%, red 100%);
+    --color-primario: hsl(0, 0%, 0%);
+    --color-fondo: hsl(0, 5%, 95%);
+    --color-fondo-letras: powderblue;
+    --color-secundario:hsl(0, 18%, 33%);
+    --color-tarjetas: aliceblue;
+}
+
+
+/**********************************************************************/
+
+body {
+    display: flex;
+}
+
+
+/**********************************************************************/
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: var(--degradado-bandera);
+    width: 40%;
+    gap: 40px;
+    padding: 1em;
+}
+
+.menu__cabecera {
+    display: flex;
+    flex-direction: column;
+    padding: 0.2em 1.1em;
+    align-items: center;
+    color: var(--color-primario);
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-primario);
+}
+
+.menu__mazos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: var(--color-secundario);
+    padding: 1em 1em;
+    border-radius: 10px;
+    border: 1px solid var(--color-primario);
+}
+
+.mazo:hover {
+    border-radius: 5px;
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.mazo {
+    border-radius: 5px;
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+
+/**********************************************************************/
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: auto;
+    background-color: var(--color-fondo-letras);
+    width: 100%;
+}
+
+
+/**********************************************************************/
+
+.panel__visor-tarjetas {
+    height: 200px;
+    width: 300px;
+    background-color: var(--color-tarjetas);
+    perspective: 1000px;
+}
+
+
+/**********************************************************************/
+
+.tarjeta {
+    width: 300px;
+    height: 200px;
+    background-color:var(--color-tarjetas);
+    transition: transform 0.5s;
+}
+
+
+.tarjeta--activa {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid var(--color-primario);
+    transform: rotateX(0deg);
+    
+}
+
+.tarjeta--izquierda {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    transform: translate(-100%);
+}
+
+.tarjeta--derecha {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    transform: translate(100%);
+}
+
+
+/**********************************************************************/
+
+
+/* Las clases --anverso y --reverso modelan los lados de la tarjeta */
+
+.tarjeta--anverso {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color-primario);
+}
+
+.tarjeta--reverso {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateX(180deg);
+    color: var(--color-primario);
+    visibility: hidden;
+}
+
+.tarjeta--volteo {
+    transform: rotateX(180deg);
+}
+
+.tarjeta--volteo .tarjeta--anverso {
+    visibility: hidden;
+}
+
+.tarjeta--volteo .tarjeta--reverso {
+    visibility: visible;
+}
+
+
+
+/**********************************************************************/
+
+.panel__navegacion {
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+}
+
+.desplazamiento {
+    cursor: pointer;
+}
+
+.referencia {
+    color: var(--color-primario);
+    width: 50 px;
+}
+
+
+/**********************************************************************/

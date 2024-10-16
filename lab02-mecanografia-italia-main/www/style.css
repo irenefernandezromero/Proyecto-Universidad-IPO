@@ -1,0 +1,136 @@
+/**********************************************************************/
+/*  PROYECTO MECANOGRAFIA        */
+/*  EQUIPO XXXX                 */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-fondo: hsl(69, 42%, 94%);
+  --color-primario: hsl(231, 46%, 61%);
+  --color-primario-claro: hsl(230, 67%, 76%);
+  --color-primario-muy-claro: hsl(231, 59%, 85%);
+  --color-sobre-primario: hsl(2, 100%, 100%);
+  --color-secundario: hsl(2, 50%, 102%);
+  --color-sobre-secundario: hsl(2, 0%, 0%);
+  --degradado-bandera: linear-gradient(90deg, green 0%, white 50%, red 100%);
+
+  --fuente-primaria: sans-serif;
+  --fuente-secuendaria: monospace;
+}
+
+/* ************************************ */
+
+.lienzo {
+  height: 100vh;
+  background-color: var(--color-fondo);
+}
+
+/* ************************************ */
+
+.cabecera {
+  padding: 0.5em 2em;
+  background-image: var(--degradado-bandera);
+
+  font-size: 1.2em;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+/* ************************************ */
+
+.panel {
+  width: clamp(500px, 90%, 800px);
+  background-color: var(--color-primario-muy-claro);
+  margin: auto auto;
+  padding: 0 0 0.8em 0 ;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* ************************************ */
+
+.panel__controles {
+  width: 100%;
+  background-color: var(--color-primario-claro);
+  text-align: center;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.cambio {
+  background-color: var(--color-secundario);
+  /* Modifica el aspecto del cursor para indicar que es un botón */
+  cursor: pointer;  
+  /* Hemos intentado hacer uso de flex, pero se desconfiguraba
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  */
+  align-items: center; 
+  box-shadow: 2px 2px 2px black ;
+  padding: 0.8em 1em;
+  margin: 8px;
+  border-radius: 10px;
+  font-family: var(--fuente-secuendaria);
+}
+
+/* ************************************ */
+.panel__marcador {
+  width: 100%;
+  padding: 1.5em 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;  /*Usamos el tipo space-evenly para que estén bien repartidos*/
+  font-family: var(--fuente-secuendaria);
+}
+
+.dato-numerico {
+  display: inline-block;
+  background-color: var(--color-primario);
+  color: var(--color-sobre-primario);
+  padding: 0.8em 1.1em;/*ajusto el padding para que nos quede mejor el marcador*/
+  margin: auto 8px;  /*Añado un pequeño margen para que no esté pegado a las letras*/
+  border-radius: 10px;
+  font-family: var(--fuente-secuendaria);
+}
+
+/* ************************************ */
+.panel__palabra-de-muestra {
+  width: 70%;
+  background-color: var(--color-primario);
+  color: var(--color-sobre-primario);
+  font-family: var(--fuente-secuendaria);
+  display: flex;
+  flex-direction: column; /*Lo pongo en columna para que vaya uno detras del otro*/
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 1em 0.8em;
+  margin:0px auto;
+}
+
+.palabra {
+  width: 33%;
+  background-color: var(--color-secundario);
+  color: var(--color-sobre-secundario);
+  font-family: var(--fuente-secuendaria);
+  margin: 10px 0;
+  text-align: center;  /*Alineo el texto al centro*/
+}
+
+/* ************************************ */
+.panel__entrada {
+  width: 60%;
+  display: flex;
+  flex-direction: column; /*Lo pongo en columna para que vaya uno detras del otro*/
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto; /*Añado un margen para que no esté tan pegado*/
+}

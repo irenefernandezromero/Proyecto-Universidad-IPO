@@ -1,0 +1,164 @@
+/**********************************************************************/
+/*  PROYECTO FIGURAS              */
+/*  EQUIPO ITALIA                 */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+   /*outline: 1px solid red;*/
+}
+
+:root {
+  --color-fondo: hsla(179, 35%, 72%, 0.748);
+  --color-primario: hsl(0, 0%, 0%);
+  --color-sobre-primario: hsl(2, 100%, 100%);
+  --color-secundario: hsl(2, 50%, 102%);
+  --color-sobre-secundario: hsl(2, 0%, 0%);
+  --degradado-bandera: linear-gradient(90deg, green 0%, white 50%, red 100%);
+
+  
+  --color-circulo: hsl(96, 71%, 28%);
+  --color-triangulo: hsl(69, 42%, 94%);
+  --color-hoja: hsl(0, 76%, 48%);
+
+
+  --color-fondo-completado: hsl(96, 31%, 54%);
+  --color-borde-completado: hsl(96, 68%, 17%);
+
+  /* Concretar el diseño tipográfico con fuentes no generalistas */
+  --fuente-primaria: monospace;
+  --fuente-secuendaria: monospace;
+
+  /* Color y tamaño de las figuras */
+  --color-figuras: hsl(133, 52%, 25%);
+  --longitud-muestra: 100px;
+}
+
+/**********************************************************************/
+
+.area {
+  height: 100vh;
+  background-color: var(--color-fondo);
+  font-family: var(--fuente-primaria);
+}
+
+/**********************************************************************/
+.cabecera {
+  padding: 1.5rem;
+  background-image: var(--degradado-bandera);
+}
+
+.titulo-proyecto {
+  color: var(--color-primario);
+  text-align: center;
+}
+
+.equipo {
+  text-transform: uppercase;
+}
+
+/**********************************************************************/
+
+.panel {
+  width: clamp(300px, 60%, 600px);
+  margin: 1.5rem auto;
+  border: 1px solid black;
+  text-align: center;  /*Para centrar el patrón de abajo*/
+}
+
+/**********************************************************************/
+
+.panel__patron {
+  /* El estilo del borde cambiará dinámicamente con JS 
+     para ilustrar cuando una figura entra en el panel del patrón  */
+  border: 1px solid var(--color-primario);
+
+  /* ======= COMPLETAR REGLA ====== */
+  /* El panel del patrón se muestra centrado dentro del panel */
+  /* Su dimensión admite albergar la figura patrón de forma holgada */
+  width: 150px;
+  margin: 20px auto; /*otra alternativa es el text-align:center*/ 
+  /*Hemos puesto un margen tb de 20px para que la caja del panel patrón tuviese separación con respecto a la parte de arriba*/
+}
+
+/**********************************************************************/
+
+.panel__alternativas {
+  /* Las figuras se enmarcan para identificarlas como un grupo */
+  border: 1px solid var(--color-primario);
+
+  /* ======= COMPLETAR REGLA ====== */
+  /* Las figuras del panel se muestran centradas */
+  margin:30px auto; /*Pongo un margen superior para que el panel no quede pegado al de arriba*/
+  width: 90%; /*Le pongo el tamaño de tres veces la figura*/
+}
+
+/**********************************************************************/
+
+.figura {
+  /* ======= COMPLETAR REGLA ====== */
+
+  /* Las figuras se enmarcan en cuadrados separados equidistantemente */
+  /* ACLARACIONES:
+       - Las figuras son definidas en HTML mediante elementos span
+       - La dimensión se define en base a --logitud-muestra  */
+
+  color: var(--color-figuras);
+  margin: 20px;  /*Añadimos un margen para que no estén las figuras pegadas*/
+  display: inline-block;
+  width: var(--longitud-muestra);
+  height: var(--longitud-muestra);
+  
+}
+
+.panel__patron .figura {
+  /* La figura del patrón se muestra ligeramente transparente 
+     para destacarla respecto de las del panel de alternativas */
+  opacity: 50%;
+}
+
+.panel--completado {
+  background-color: var(--color-fondo-completado);
+  border: 5px dotted var(--color-borde-completado);
+
+}
+
+/**********************************************************************/
+
+/* Estilos para ilustrar la operación de arrastrar y soltar  */
+
+.figura--sobrevolando {
+  /* ======= COMPLETAR REGLA ====== */
+  color: var(--color-figuras);
+  opacity: 50%;
+}
+
+.figura--arrastrando {
+  /* ======= COMPLETAR REGLA ====== */
+  color: var(--color-figuras);
+  opacity: 90%;
+}
+
+/**********************************************************************/
+/* Formas que pueden adoptar las figuras         */
+
+.circulo {
+  border-radius: 50%;
+  background-color: var(--color-circulo);
+}
+
+.triangulo {
+  --mitad: calc(var(--longitud-muestra) / 2);
+
+  border-left: var(--mitad) solid transparent;
+  border-right: var(--mitad) solid transparent;
+  border-bottom: var(--longitud-muestra) solid var(--color-triangulo);
+}
+
+
+.hoja {
+  background-color: var(--color-hoja);
+  border-radius: 0% 75%;
+}
